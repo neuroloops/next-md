@@ -3,22 +3,21 @@ import fs from 'fs'
 import Head from 'next/head'
 import matter from "gray-matter"
 import Post from "../components/Post"
-import Header from "../components/Header"
 import { sortByDate } from '../utils'
 
 export default function Home({ posts }) {
-  console.log(posts)
   return (
-    <>
-      <Header />
-      <div>
-        <div className="posts">
-          {posts.map((post, index) => (
-            <Post post={post} />
-          ))}
-        </div>
+    <div>
+      <Head>
+        <title>Dev Blog</title>
+      </Head>
+
+      <div className='posts'>
+        {posts.map((post, index) => (
+          <Post key={index} post={post} />
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 
